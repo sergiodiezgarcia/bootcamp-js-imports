@@ -9,3 +9,5 @@ export let partida: Partida = {
 export const inicializaPartida = () => {
   partida = { puntuacion: 0 };
 };
+
+export const MAXIMO_PUNTUACION: number = 7;

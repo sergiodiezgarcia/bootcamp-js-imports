@@ -1,6 +1,6 @@
-import {partida} from './modelo';
+import {MAXIMO_PUNTUACION, partida} from './modelo';
 
-const MAXIMO_PUNTUACION: number = 7;
+
 //let puntuacion: number = 0;
 
 const hasSuperadoLaPuntuacion = () => {
