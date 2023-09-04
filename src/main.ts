@@ -1,14 +1,11 @@
-import {MAXIMO_PUNTUACION, partida} from './modelo';
-import { hasSuperadoLaPuntuacion,dameCarta,dameImagenDeCarta,calculaPuntosDeUnaCarta} from './motor';
-
-
-const muestraNumeroPuntuacion = () => {
-  const elementoPuntuacion = document.getElementById("puntuacion");
-  if (elementoPuntuacion) {
-    elementoPuntuacion.innerHTML = `${partida.puntuacion} de ${MAXIMO_PUNTUACION}`;
-  }
-};
-
+import { partida } from "./modelo";
+import {
+  hasSuperadoLaPuntuacion,
+  dameCarta,
+  dameImagenDeCarta,
+  calculaPuntosDeUnaCarta,
+} from "./motor";
+import { muestraNumeroPuntuacion,asignaImagenAElementoImg,habilitaPedirCarta,habilitarBotonMePlanto } from "./ui";
 
 const inicializaJuego = () => {
   partida.puntuacion = 0;
@@ -20,23 +17,10 @@ const inicializaJuego = () => {
 document.addEventListener("DOMContentLoaded", inicializaJuego);
 
 
-const asignaImagenAElementoImg = (urlImagen: string) => {
-  const cartaElemento = document.getElementById("carta");
-  if (cartaElemento instanceof HTMLImageElement) {
-    cartaElemento.src = urlImagen;
-  }
-};
 
 const muestraCarta = (numerocarta: number) => {
   const urlImagen = dameImagenDeCarta(numerocarta);
   asignaImagenAElementoImg(urlImagen);
-};
-
-const habilitaPedirCarta = (habilitar: boolean) => {
-  const botonDameCarta = document.getElementById("dameCarta");
-  if (botonDameCarta instanceof HTMLButtonElement) {
-    botonDameCarta.disabled = !habilitar;
-  }
 };
 
 
@@ -55,7 +39,8 @@ if (botonDameCarta instanceof HTMLButtonElement) {
   botonDameCarta.addEventListener("click", () => {
     const nuevoNumero = dameCarta();
     muestraCarta(nuevoNumero);
-    partida.puntuacion = partida.puntuacion + calculaPuntosDeUnaCarta(nuevoNumero);
+    partida.puntuacion =
+      partida.puntuacion + calculaPuntosDeUnaCarta(nuevoNumero);
     muestraNumeroPuntuacion();
     if (hasSuperadoLaPuntuacion()) {
       alert("has superado el numero de intentos");
@@ -66,12 +51,7 @@ if (botonDameCarta instanceof HTMLButtonElement) {
   });
 }
 
-const habilitarBotonMePlanto = (habilitar: boolean) => {
-  const botonMePlanto = document.getElementById("mePlanto");
-  if (botonMePlanto instanceof HTMLButtonElement) {
-    botonMePlanto.disabled = !habilitar;
-  }
-};
+
 
 const mensajeMePlanto = (puntacion: number): string => {
   habilitaPedirCarta(false);
