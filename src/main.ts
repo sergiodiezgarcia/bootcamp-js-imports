@@ -1,14 +1,16 @@
+import {partida} from './modelo';
+
 const MAXIMO_PUNTUACION: number = 7;
-let puntuacion: number = 0;
+//let puntuacion: number = 0;
 
 const hasSuperadoLaPuntuacion = () => {
-  return puntuacion > MAXIMO_PUNTUACION;
+  return partida.puntuacion > MAXIMO_PUNTUACION;
 };
 
 const muestraNumeroPuntuacion = () => {
   const elementoPuntuacion = document.getElementById("puntuacion");
   if (elementoPuntuacion) {
-    elementoPuntuacion.innerHTML = `${puntuacion} de ${MAXIMO_PUNTUACION}`;
+    elementoPuntuacion.innerHTML = `${partida.puntuacion} de ${MAXIMO_PUNTUACION}`;
   }
 };
 
@@ -26,7 +28,7 @@ const dameCarta = (): number => {
 };
 
 const inicializaJuego = () => {
-  puntuacion = 0;
+  partida.puntuacion = 0;
   muestraNumeroPuntuacion();
   dameCarta();
   habilitaPedirCarta(true);
@@ -108,7 +110,7 @@ if (botonDameCarta instanceof HTMLButtonElement) {
   botonDameCarta.addEventListener("click", () => {
     const nuevoNumero = dameCarta();
     muestraCarta(nuevoNumero);
-    puntuacion = puntuacion + calculaPuntosDeUnaCarta(nuevoNumero);
+    partida.puntuacion = partida.puntuacion + calculaPuntosDeUnaCarta(nuevoNumero);
     muestraNumeroPuntuacion();
     if (hasSuperadoLaPuntuacion()) {
       alert("has superado el numero de intentos");
@@ -129,17 +131,17 @@ const habilitarBotonMePlanto = (habilitar: boolean) => {
 const mensajeMePlanto = (puntacion: number): string => {
   habilitaPedirCarta(false);
   habilitarBotonMePlanto(false);
-  if (puntuacion >= 0 && puntacion < 2) {
+  if (partida.puntuacion >= 0 && puntacion < 2) {
     return "Parece que no has entendido el juego";
   }
 
-  if (puntuacion >= 2 && puntacion < 4) {
+  if (partida.puntuacion >= 2 && puntacion < 4) {
     return "Parece que no has entendido el juego";
   }
-  if (puntuacion >= 4 && puntacion < 6) {
+  if (partida.puntuacion >= 4 && puntacion < 6) {
     return "bien, parece que lo estas entendiendo";
   }
-  if (puntuacion >= 6) {
+  if (partida.puntuacion >= 6) {
     return "bien hecho!!";
   }
 
@@ -150,7 +152,7 @@ const botonMePlanto = document.getElementById("mePlanto");
 
 if (botonMePlanto instanceof HTMLButtonElement) {
   botonMePlanto.addEventListener("click", () => {
-    const mensaje = mensajeMePlanto(puntuacion);
+    const mensaje = mensajeMePlanto(partida.puntuacion);
     alert(mensaje);
   });
 }
