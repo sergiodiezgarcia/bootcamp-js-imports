@@ -22,9 +22,3 @@ export const habilitaPedirCarta = (habilitar: boolean) => {
     }
   };
 
-export const habilitarBotonMePlanto = (habilitar: boolean) => {
-  const botonMePlanto = document.getElementById("mePlanto");
-  if (botonMePlanto instanceof HTMLButtonElement) {
-    botonMePlanto.disabled = !habilitar;
-  }
-};

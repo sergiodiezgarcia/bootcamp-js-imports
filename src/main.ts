@@ -5,7 +5,7 @@ import {
   dameImagenDeCarta,
   calculaPuntosDeUnaCarta,
 } from "./motor";
-import { muestraNumeroPuntuacion,asignaImagenAElementoImg,habilitaPedirCarta,habilitarBotonMePlanto } from "./ui";
+import { muestraNumeroPuntuacion,asignaImagenAElementoImg,habilitaPedirCarta } from "./ui";
 
 const inicializaJuego = () => {
   partida.puntuacion = 0;
@@ -51,7 +51,12 @@ if (botonDameCarta instanceof HTMLButtonElement) {
   });
 }
 
-
+const habilitarBotonMePlanto = (habilitar: boolean) => {
+  const botonMePlanto = document.getElementById("mePlanto");
+  if (botonMePlanto instanceof HTMLButtonElement) {
+    botonMePlanto.disabled = !habilitar;
+  }
+};
 
 const mensajeMePlanto = (puntacion: number): string => {
   habilitaPedirCarta(false);
