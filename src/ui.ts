@@ -1,4 +1,5 @@
 import { MAXIMO_PUNTUACION, partida } from "./modelo";
+import { dameCarta, dameImagenDeCarta } from "./motor";
 
 
 export const muestraNumeroPuntuacion = () => {
@@ -22,3 +23,18 @@ export const habilitaPedirCarta = (habilitar: boolean) => {
     }
   };
 
+export const inicializaJuego = () => {
+  partida.puntuacion = 0;
+  muestraNumeroPuntuacion();
+  dameCarta();
+  habilitaPedirCarta(true);
+};
+
+
+export const muestraCarta = (numerocarta: number) => {
+    const urlImagen = dameImagenDeCarta(numerocarta);
+    asignaImagenAElementoImg(urlImagen);
+  };
+
+export const botonDameCarta = document.getElementById("dameCarta");
+export const botonNuevaPartida = document.getElementById("nuevaPartida");

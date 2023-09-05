@@ -2,31 +2,18 @@ import { partida } from "./modelo";
 import {
   hasSuperadoLaPuntuacion,
   dameCarta,
-  dameImagenDeCarta,
   calculaPuntosDeUnaCarta,
 } from "./motor";
-import { muestraNumeroPuntuacion,asignaImagenAElementoImg,habilitaPedirCarta } from "./ui";
+import { muestraNumeroPuntuacion,habilitaPedirCarta, inicializaJuego,muestraCarta,
+botonNuevaPartida,
+botonDameCarta,
+ } from "./ui";
 
-const inicializaJuego = () => {
-  partida.puntuacion = 0;
-  muestraNumeroPuntuacion();
-  dameCarta();
-  habilitaPedirCarta(true);
-};
+
 
 document.addEventListener("DOMContentLoaded", inicializaJuego);
 
 
-
-const muestraCarta = (numerocarta: number) => {
-  const urlImagen = dameImagenDeCarta(numerocarta);
-  asignaImagenAElementoImg(urlImagen);
-};
-
-
-
-const botonDameCarta = document.getElementById("dameCarta");
-const botonNuevaPartida = document.getElementById("nuevaPartida");
 
 if (botonNuevaPartida instanceof HTMLButtonElement) {
   botonNuevaPartida.addEventListener("click", () => {
