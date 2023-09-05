@@ -1,1 +1,1 @@
-# bootcamp-js-modulo-condicionales
+# bootcamp-js-modulo-imports
