@@ -1,5 +1,5 @@
 import { MAXIMO_PUNTUACION, partida } from "./modelo";
-import { dameCarta, dameImagenDeCarta } from "./motor";
+import { dameMensajePorPuntuacion, dameCarta, dameImagenDeCarta, } from "./motor";
 
 
 export const muestraNumeroPuntuacion = () => {
@@ -46,24 +46,11 @@ export const muestraCarta = (numerocarta: number) => {
 export const botonDameCarta = document.getElementById("dameCarta");
 export const botonNuevaPartida = document.getElementById("nuevaPartida");
 
-export const mensajeMePlanto = (puntacion: number): string => {
+export const mensajeMePlanto = (puntuacion: number): string => {
     habilitaPedirCarta(false);
     habilitarBotonMePlanto(false);
-    if (partida.puntuacion >= 0 && puntacion < 2) {
-      return "Parece que no has entendido el juego";
-    }
-  
-    if (partida.puntuacion >= 2 && puntacion < 4) {
-      return "Parece que no has entendido el juego";
-    }
-    if (partida.puntuacion >= 4 && puntacion < 6) {
-      return "bien, parece que lo estas entendiendo";
-    }
-    if (partida.puntuacion >= 6) {
-      return "bien hecho!!";
-    }
-  
-    return "error";
+    return dameMensajePorPuntuacion(puntuacion);
+   
   };
   
 export const botonMePlanto = document.getElementById("mePlanto");

@@ -55,7 +55,25 @@ export const dameImagenDeCarta = (numeroCarta: number) => {
   
     return urlImagen;
   };
-  
+ 
+export const dameMensajePorPuntuacion = (puntuacion: number) :string => {
+  if (partida.puntuacion >= 0 && puntuacion < 2) {
+    return "Parece que no has entendido el juego";
+  }
+
+  if (partida.puntuacion >= 2 && puntuacion < 4) {
+    return "Parece que no has entendido el juego";
+  }
+  if (partida.puntuacion >= 4 && puntuacion < 6) {
+    return "bien, parece que lo estas entendiendo";
+  }
+  if (partida.puntuacion >= 6) {
+    return "bien hecho!!";
+  }
+
+  return "error";
+}  
+
 export const calculaPuntosDeUnaCarta = (numero: number): number =>
   numero <= 7 ? numero : 0.5;
 
