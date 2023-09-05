@@ -7,7 +7,10 @@ import {
 import { muestraNumeroPuntuacion,habilitaPedirCarta, inicializaJuego,muestraCarta,
 botonNuevaPartida,
 botonDameCarta,
- } from "./ui";
+botonMePlanto,
+mensajeMePlanto,
+habilitarBotonMePlanto,
+} from "./ui";
 
 
 
@@ -38,34 +41,8 @@ if (botonDameCarta instanceof HTMLButtonElement) {
   });
 }
 
-const habilitarBotonMePlanto = (habilitar: boolean) => {
-  const botonMePlanto = document.getElementById("mePlanto");
-  if (botonMePlanto instanceof HTMLButtonElement) {
-    botonMePlanto.disabled = !habilitar;
-  }
-};
 
-const mensajeMePlanto = (puntacion: number): string => {
-  habilitaPedirCarta(false);
-  habilitarBotonMePlanto(false);
-  if (partida.puntuacion >= 0 && puntacion < 2) {
-    return "Parece que no has entendido el juego";
-  }
 
-  if (partida.puntuacion >= 2 && puntacion < 4) {
-    return "Parece que no has entendido el juego";
-  }
-  if (partida.puntuacion >= 4 && puntacion < 6) {
-    return "bien, parece que lo estas entendiendo";
-  }
-  if (partida.puntuacion >= 6) {
-    return "bien hecho!!";
-  }
-
-  return "error";
-};
-
-const botonMePlanto = document.getElementById("mePlanto");
 
 if (botonMePlanto instanceof HTMLButtonElement) {
   botonMePlanto.addEventListener("click", () => {
@@ -73,3 +50,4 @@ if (botonMePlanto instanceof HTMLButtonElement) {
     alert(mensaje);
   });
 }
+

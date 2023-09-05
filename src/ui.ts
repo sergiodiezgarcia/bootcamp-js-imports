@@ -30,6 +30,13 @@ export const inicializaJuego = () => {
   habilitaPedirCarta(true);
 };
 
+export const habilitarBotonMePlanto = (habilitar: boolean) => {
+    const botonMePlanto = document.getElementById("mePlanto");
+    if (botonMePlanto instanceof HTMLButtonElement) {
+      botonMePlanto.disabled = !habilitar;
+    }
+  };
+
 
 export const muestraCarta = (numerocarta: number) => {
     const urlImagen = dameImagenDeCarta(numerocarta);
@@ -38,3 +45,26 @@ export const muestraCarta = (numerocarta: number) => {
 
 export const botonDameCarta = document.getElementById("dameCarta");
 export const botonNuevaPartida = document.getElementById("nuevaPartida");
+
+export const mensajeMePlanto = (puntacion: number): string => {
+    habilitaPedirCarta(false);
+    habilitarBotonMePlanto(false);
+    if (partida.puntuacion >= 0 && puntacion < 2) {
+      return "Parece que no has entendido el juego";
+    }
+  
+    if (partida.puntuacion >= 2 && puntacion < 4) {
+      return "Parece que no has entendido el juego";
+    }
+    if (partida.puntuacion >= 4 && puntacion < 6) {
+      return "bien, parece que lo estas entendiendo";
+    }
+    if (partida.puntuacion >= 6) {
+      return "bien hecho!!";
+    }
+  
+    return "error";
+  };
+  
+export const botonMePlanto = document.getElementById("mePlanto");
+  
